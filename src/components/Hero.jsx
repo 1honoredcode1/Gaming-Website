@@ -47,7 +47,8 @@ const Hero = () => {
 
         {/* Supporting description */}
         <p className="max-w-[80%] text-center text-[#babaff]">
-          We are now live and ready. Join us and conquer your foes.
+          Notice: Illuvium Games are in Beta. Participation involves risk.
+          <a href="">Read our full Disclaimer here.</a>
         </p>
       </div>
 
