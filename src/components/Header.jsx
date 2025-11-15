@@ -10,7 +10,7 @@ const Header = () => {
   return (
     // ***** HEADER WRAPPER *****
     // Fixed header with border, spacing, and flex layout
-    <header className="py-1 px-7 flex justify-between items-center fixed top-0 z-50 w-full border-b-[0.3px] border-[#babaff]">
+    <header className="py-1 px-7 flex justify-between items-center sticky bg-black top-0 z-50 w-full border-b-[0.3px] border-[#babaff] ">
       {/* ----- LEFT SECTION: LOGO + DESKTOP BUTTONS ----- */}
       <div className="flex lg:gap-14 gap-4 items-center">
         {/* Logo */}
