@@ -60,7 +60,7 @@ const Hero = () => {
           </div>
 
           {/* Text below indicator */}
-          <p className="text-[#babaff] mt-2">Scroll at Your Desire</p>
+          <p className="text-[#babaff] mt-2">Scroll At Your Desire</p>
         </div>
       </div>
     </main>

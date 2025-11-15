@@ -1,10 +1,66 @@
 import { Star } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Spline from "@splinetool/react-spline";
 
+function CustomeCursor({ isHovering3D }) {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const cursorRef = useRef(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setPosition({ x: e.clientX, y: e.clientY });
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  return (
+    <motion.div
+      ref={cursorRef}
+      className="fixed top-0 left-0 z-50 pointer-events-none mix-blend-difference"
+      animate={{
+        x: position.x - (isHovering3D ? 12 : 15),
+        y: position.y - (isHovering3D ? 12 : 15),
+        scale: isHovering3D ? 1.5 : 1,
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 180,
+        damping: 22,
+        mass: 0.5,
+      }}
+    >
+      <motion.div
+        className={`relative rounded-full ${
+          isHovering3D ? "bg-violet-500" : "bg-white"
+        }`}
+        animate={{
+          width: isHovering3D ? "24px" : "40px",
+          height: isHovering3D ? "24px" : "40px",
+        }}
+        transition={{ duration: 0.2 }}
+      >
+        {isHovering3D && (
+          <motion.div
+            className="absolute inset-0 rounded-full border border-violet-500"
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 2, opacity: 0.5 }}
+            transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY }}
+          />
+        )}
+      </motion.div>
+    </motion.div>
+  );
+}
+
 const Characters = () => {
   const [selectedAvatar, setSelectedAvatar] = useState("VIKI");
+
+  const [cursorInModelArea, setCursorInModelArea] = useState(false);
 
   const Avatar = {
     VIKI: {
@@ -26,9 +82,16 @@ const Characters = () => {
   };
 
   const currentAvatar = Avatar[selectedAvatar];
+  const handle3DAreaMouseEnter = () => {
+    setCursorInModelArea(true);
+  };
+  const handle3DAreaMouseLeave = () => {
+    setCursorInModelArea(false);
+  };
 
   return (
     <div className="relative w-full h-screen overflow-hidden mb-[10%] ">
+      <CustomeCursor isHovering3D={cursorInModelArea} />
       <div className="relative z-10 pt-6 text-center">
         <h1
           className="text-5xl font-bold tracking-widest md:-mb-14 mb-8"
@@ -48,40 +111,44 @@ const Characters = () => {
               <div className="flex items-center">
                 <span className="w-24 text-gray-400">Power</span>
                 <div className="flex-1 h-4 bg-gray-800 rounded-full overflow-hidden">
-                  <div
+                  <motion.div
                     className="h-full bg-linear-to-r from-violet-600 to-white"
-                    style={{ width: `${currentAvatar.power}%` }}
-                  ></div>
-                  <span className="ml-2">{currentAvatar.power} </span>
+                    animate={{ width: `${currentAvatar.power}%` }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                  />
+                  <span className="ml-2">{currentAvatar.power}</span>
                 </div>
               </div>
               <div className="flex items-center">
                 <span className="w-24 text-gray-400">Stable</span>
                 <div className="flex-1 h-4 bg-gray-800 rounded-full overflow-hidden">
-                  <div
+                  <motion.div
                     className="h-full bg-linear-to-r from-violet-600 to-white"
-                    style={{ width: `${currentAvatar.stable}%` }}
-                  ></div>
+                    animate={{ width: `${currentAvatar.stable}%` }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                  />
                   <span className="ml-2">{currentAvatar.stable} </span>
                 </div>
               </div>
               <div className="flex items-center">
                 <span className="w-24 text-gray-400">Penetrate</span>
                 <div className="flex-1 h-4 bg-gray-800 rounded-full overflow-hidden">
-                  <div
+                  <motion.div
                     className="h-full bg-linear-to-r from-violet-600 to-white"
-                    style={{ width: `${currentAvatar.penetrate}%` }}
-                  ></div>
+                    animate={{ width: `${currentAvatar.penetrate}%` }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                  />
                   <span className="ml-2">{currentAvatar.penetrate} </span>
                 </div>
               </div>
               <div className="flex items-center">
                 <span className="w-24 text-gray-400">Portable</span>
                 <div className="flex-1 h-4 bg-gray-800 rounded-full overflow-hidden">
-                  <div
+                  <motion.div
                     className="h-full bg-linear-to-r from-violet-600 to-white"
-                    style={{ width: `${currentAvatar.portable}%` }}
-                  ></div>
+                    animate={{ width: `${currentAvatar.portable}%` }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                  />
                   <span className="ml-2">{currentAvatar.portable} </span>
                 </div>
               </div>
@@ -146,16 +213,20 @@ const Characters = () => {
             </div>
           </div>
         </div>
-        <div className="relative md:w-2/4 w-full md:h-full h-80 flex items-center justify-center overflow-hidden">
+        <div
+          className="relative md:w-2/4 w-full md:h-full h-80 flex items-center justify-center overflow-hidden"
+          onMouseEnter={handle3DAreaMouseEnter}
+          onMouseLeave={handle3DAreaMouseLeave}
+        >
           <AnimatePresence mode="wait">
             {selectedAvatar === "VIKI" ? (
               <motion.div
                 key="VIKI"
                 className="absolute inset-0"
-                initial={{ x: "100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "-100%" }}
-                transition={{ duration: 0.5 }}
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -40 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
               >
                 <Spline scene="https://prod.spline.design/v7waZquYUJDBrl1x/scene.splinecode" />
               </motion.div>
@@ -163,10 +234,10 @@ const Characters = () => {
               <motion.div
                 key="EVA"
                 className="absolute inset-0"
-                initial={{ x: "100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "-100%" }}
-                transition={{ duration: 0.5 }}
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -40 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
               >
                 <Spline scene="https://prod.spline.design/GQTc6UnPJsrhBJF1/scene.splinecode" />
               </motion.div>
