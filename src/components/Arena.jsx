@@ -2,7 +2,10 @@ import "boxicons/css/boxicons.min.css";
 
 const Arena = () => {
   return (
-    <section className="relative md:min-h-[90vh] mt-32 md:mt-0 px-4 lg:px-8 pb-16">
+    <section
+      id="arena"
+      className="relative md:min-h-[90vh] mt-32 md:mt-0 px-4 lg:px-8 pb-16"
+    >
       {/* Title */}
       <div className="relative z-10 pt-6 text-center mb-10 md:mb-16">
         <h1

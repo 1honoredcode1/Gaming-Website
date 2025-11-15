@@ -104,7 +104,10 @@ const Characters = () => {
   const handle3DAreaMouseLeave = () => setCursorInModelArea(false);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden mb-[10%]">
+    <div
+      id="avatar"
+      className="relative w-full h-screen overflow-hidden mb-[10%]"
+    >
       {/* Custom cursor overlay */}
       <CustomeCursor isHovering3D={cursorInModelArea} />
 

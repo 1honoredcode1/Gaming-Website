@@ -14,16 +14,26 @@ const Header = () => {
       {/* ----- LEFT SECTION: LOGO + DESKTOP BUTTONS ----- */}
       <div className="flex lg:gap-14 gap-4 items-center">
         {/* Logo */}
-        <img src="public/images/logo.png" alt="logo" className="md:w-16 w-12" />
+        <a href="/">
+          <img
+            src="public/images/logo.png"
+            alt="logo"
+            className="md:w-16 w-12"
+          />
+        </a>
 
         {/* Desktop CTA buttons (hidden on mobile) */}
         <div className="hidden md:flex gap-5 items-center">
-          <button className="h-8 px-6 bg-linear-to-r from-purple-500 to-indigo-600 rounded-lg font-medium text-nowrap hover:opacity-70 transition-all duration-300">
-            Play Now
-          </button>
-          <button className="h-8 px-6 bg-linear-to-r from-gray-400 to-gray-600 rounded-lg font-medium text-nowrap hover:opacity-70 transition-all duration-300">
-            Play Now
-          </button>
+          <a href="https://overworld.illuvium.io">
+            <button className="h-8 px-6 bg-linear-to-r from-purple-500 to-indigo-600 rounded-lg font-medium text-nowrap hover:opacity-70 transition-all duration-300">
+              Play Now
+            </button>
+          </a>
+          <a href="https://overworld.illuvium.io">
+            <button className="h-8 px-6 bg-linear-to-r from-gray-400 to-gray-600 rounded-lg font-medium text-nowrap hover:opacity-70 transition-all duration-300">
+              Play Now
+            </button>
+          </a>
         </div>
       </div>
 
@@ -31,7 +41,7 @@ const Header = () => {
       <nav className="hidden md:flex lg:gap-8 gap-4">
         {/* Single nav link with animated underline */}
         <a
-          href="#"
+          href="#avatar"
           className="
             relative inline-flex items-center gap-1
             py-1 text-lg hover:text-purple-300
@@ -49,7 +59,7 @@ const Header = () => {
 
         {/* Arena */}
         <a
-          href="#"
+          href="#arena"
           className="
             relative inline-flex items-center gap-1
             py-1 text-lg hover:text-purple-300 transition-colors duration-300
@@ -65,7 +75,7 @@ const Header = () => {
 
         {/* Store */}
         <a
-          href="#"
+          href="#home"
           className="
             relative inline-flex items-center gap-1
             py-1 text-lg hover:text-purple-300 transition-colors duration-300
@@ -76,7 +86,7 @@ const Header = () => {
           "
         >
           <i className="bx bxs-store-alt" />
-          Store
+          Donwload
         </a>
       </nav>
 
@@ -94,7 +104,7 @@ const Header = () => {
         <nav className="flex flex-col gap-4 items-center">
           {/* Avatar */}
           <a
-            href="#"
+            href="#avatar"
             className="
               relative inline-flex items-center gap-1
               py-1 text-lg hover:text-purple-300 transition-colors duration-300
@@ -110,7 +120,7 @@ const Header = () => {
 
           {/* Arena */}
           <a
-            href="#"
+            href="#arena"
             className="
               relative inline-flex items-center gap-1
               py-1 text-lg hover:text-purple-300 transition-colors duration-300
@@ -126,7 +136,7 @@ const Header = () => {
 
           {/* Store */}
           <a
-            href="#"
+            href="#home"
             className="
               relative inline-flex items-center gap-1
               py-1 text-lg hover:text-purple-300 transition-colors duration-300
@@ -137,10 +147,9 @@ const Header = () => {
             "
           >
             <i className="bx bxs-store-alt" />
-            Store
+            Download
           </a>
         </nav>
-
         {/* Mobile CTA buttons */}
         <div className="flex flex-col gap-3 w-full mt-4">
           <button className="bg-purple-700 py-2 rounded">Play</button>

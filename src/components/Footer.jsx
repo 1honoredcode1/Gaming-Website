@@ -12,19 +12,19 @@ const Footer = () => {
       <div className="flex gap-4">
         <a
           className="md:text-3xl text-2xl hover:text-violet-600 duration-300"
-          href=""
+          href="https://x.com/illuvination?lang=en"
         >
           <i class="bx bxl-twitter"></i>
         </a>
         <a
           className="md:text-3xl text-2xl hover:text-violet-600 duration-300"
-          href=""
+          href="https://www.instagram.com/illuviumio/?hl=en"
         >
           <i class="bx bxl-instagram"></i>
         </a>
         <a
           className="md:text-3xl text-2xl hover:text-violet-600 duration-300"
-          href=""
+          href="https://www.youtube.com/c/illuvium"
         >
           <i class="bx bxl-youtube"></i>
         </a>

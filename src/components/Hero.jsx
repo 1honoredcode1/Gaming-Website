@@ -2,7 +2,10 @@ const Hero = () => {
   return (
     // ***** HERO SECTION WRAPPER *****
     // Full-screen section with background video and centered content
-    <main className="relative w-full h-screen overflow-hidden flex justify-center mb-[10%]">
+    <main
+      id="home"
+      className="relative w-full h-screen overflow-hidden flex justify-center mb-[10%]"
+    >
       {/* ----- BACKGROUND VIDEO ----- */}
       <video
         src="/videos/hero.mp4" // Public assets should be referenced with leading "/"
@@ -31,9 +34,11 @@ const Hero = () => {
         <div className="md:w-[75%] w-[60%] h-[0.1px] bg-[#baba]"></div>
 
         {/* CTA Button */}
-        <button className="h-10 px-16 bg-linear-to-r from-purple-500 to-indigo-600 rounded-lg font-medium text-nowrap hover:opacity-70 transition-all duration-300">
-          Play Now
-        </button>
+        <a href="https://overworld.illuvium.io">
+          <button className="h-10 px-16 bg-linear-to-r from-purple-500 to-indigo-600 rounded-lg font-medium text-nowrap hover:opacity-70 transition-all duration-300">
+            Play Now
+          </button>
+        </a>
 
         {/* Secondary branding text + image */}
         <div className="flex items-center gap-5 text-3xl font-extrabold text-gray-200">
@@ -47,8 +52,13 @@ const Hero = () => {
 
         {/* Supporting description */}
         <p className="max-w-[80%] text-center text-[#babaff]">
-          Notice: Illuvium Games are in Beta. Participation involves risk.
-          <a href="">Read our full Disclaimer here.</a>
+          Notice: Illuvium Games are in Beta.Participation involves risk. <br />
+          <a
+            href="https://overworld.illuvium.io"
+            className="hover:text-violet-500 hover:underline"
+          >
+            Read our full Disclaimer here.
+          </a>
         </p>
       </div>
 
