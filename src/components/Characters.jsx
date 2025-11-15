@@ -180,7 +180,7 @@ const Characters = () => {
 
                 {/* Avatar image */}
                 <img
-                  src={`public/images/${data.name}.png`}
+                  src={`/images/${data.name}.png`}
                   alt={data.name}
                   className="w-20 h-20 bg-gray-800/50 rounded-md mb-2"
                 />

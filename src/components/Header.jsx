@@ -15,11 +15,7 @@ const Header = () => {
       <div className="flex lg:gap-14 gap-4 items-center">
         {/* Logo */}
         <a href="/">
-          <img
-            src="public/images/logo.png"
-            alt="logo"
-            className="md:w-16 w-12"
-          />
+          <img src="/images/logo.png" alt="logo" className="md:w-16 w-12" />
         </a>
 
         {/* Desktop CTA buttons (hidden on mobile) */}
